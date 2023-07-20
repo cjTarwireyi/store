@@ -23,7 +23,7 @@ export class CartService {
 
       this.cart.next({items});
 
-      this._snackBar.open('1 item added to cart', 'Ok', {duration: 3000});
+      this.NotifyUser('1 item added to cart');
       console.log(this.cart.value);
   }
 
@@ -39,13 +39,13 @@ export class CartService {
     
   clearCart():void{
      this.cart.next({items:[]});
-    this._snackBar.open('Cart is cleared', 'Ok', {duration: 3000});
+    this.NotifyUser('Cart is cleared');
   }
 
-  removeItem(item:ICartItem): void{
-    const filteredItem = this.cart.value.items.filter(item => item.id != item.id);
+  removeItem(item: ICartItem): void{
+    const filteredItem = this.cart.value.items.filter(_item => _item.id != item.id);
     this.cart.next({items: filteredItem});
-    this._snackBar.open('Item removed from Cart', 'Ok', {duration: 3000});
+    this.NotifyUser('Item removed from Cart',);
   }
 
   onIncrementItemQuantity(item: ICartItem):void {
@@ -56,6 +56,7 @@ export class CartService {
       itemsInCart.quantity +=1;
 
         this.cart.next({items});
+        this.NotifyUser('One item added to the Cart',);
   }
 
   onDecrementItemQuantity(item: ICartItem):void {
@@ -63,11 +64,15 @@ export class CartService {
     const itemsInCart = items.find(_item => item.id === item.id);
     
     if(itemsInCart && itemsInCart.quantity> 1){
-      itemsInCart.quantity -=1;
+      itemsInCart.quantity --;
       this.cart.next({items});
+      this.NotifyUser('One item removed from the Cart',);
     }      
     else{
       this.removeItem(item);
     }
+  }
+  private NotifyUser(message:string):void{
+    this._snackBar.open(message, 'Ok', {duration: 3000});
   }
 }
