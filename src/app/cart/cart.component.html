@@ -4,7 +4,7 @@
         <ng-container matColumnDef="{{column}}" *ngFor="let column of displayedColumns">
             <th mat-header-cell *matHeaderCellDef="">
                <span *ngIf="column != 'action'">{{column}}</span> 
-               <button class="float-right"  mat-raised-button color="warn" *ngIf="column == 'action'">Clear All</button> 
+               <button class="float-right" (click)="onClearCart()"  mat-raised-button color="warn" *ngIf="column == 'action'">Clear All</button> 
             </th>
 
 
@@ -25,14 +25,14 @@
 
                 <p  *ngIf="column == 'total'">{{getSubTotal(element) | currency}}</p>
 
-                <button class="float-right" mat-mini-fab color="warn" *ngIf="column == 'action'">
+                <button (click)="onRemoveItem(element)" class="float-right" mat-mini-fab color="warn" *ngIf="column == 'action'">
                     <mat-icon>close</mat-icon>
                 </button> 
             </td>
 
 
             <td mat-footer-cell *matFooterCellDef>
-                <button *ngIf="column == 'product'"  mat-raised-button routerLink="/home">Continue shopping</button>
+                <button *ngIf="column == 'product'"  mat-raised-button routerLink="/products">Continue shopping</button>
                 <span *ngIf="column == 'total'" class="font-bold py-5 block">{{getTotal(cart.items) | currency}}</span>
                 <button *ngIf="column == 'action'" mat-raised-button color="primary" class="float-right"> Proceed To Checkout</button>
             </td>

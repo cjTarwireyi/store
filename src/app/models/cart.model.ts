@@ -1,5 +1,5 @@
 
-export interface Cart{
+export interface ICart{
     items: ICartItem[]
 }
 export interface ICartItem{

@@ -1,27 +1,14 @@
 import { identifierName } from '@angular/compiler';
 import { Component, OnInit } from '@angular/core';
-import { Cart, ICartItem } from 'src/app/models/cart.model';
+import { ICart, ICartItem } from 'src/app/models/cart.model';
+import { CartService } from './cart.service';
 
 @Component({
   selector: 'app-cart',
 templateUrl:'./cart.component.html'
 })
 export class CartComponent implements OnInit {
-   cart: Cart = {items:[
-    {
-      product:'https://via.placeholder.com/150',
-      name:'Snickers',
-      price:130,
-      quantity:2,
-      id:1
-    },
-    {
-      product:'https://via.placeholder.com/150',
-      name:'T-shirt',
-      price:100,
-      quantity:1,
-      id:2
-    }
+   cart: ICart = {items:[
    ]};
 
    dataSource : ICartItem[] =[];
@@ -34,15 +21,27 @@ export class CartComponent implements OnInit {
     'total',
     'action'
    ]
+   constructor(private cartService: CartService){}
    getSubTotal(item:ICartItem):number{
-    return item.price * item.quantity;   
+    return this.cartService.getSubTotal(item); 
     }
+
    getTotal(items:ICartItem[]):number{
-   return items
-    .map(item => item.price * item.quantity)
-    .reduce((previousItem, currentItem)=> previousItem +currentItem,0);   
-   }
+   return this.cartService.getTotal(items);
+   } 
+
    ngOnInit():void{
+    this.cartService.cart.subscribe(_cart => {
+      this.cart = _cart;
       this.dataSource = this.cart.items;
+    })      
    }
+
+  onClearCart():void{
+    this.cartService.clearCart();
+  }
+
+  onRemoveItem(item: ICartItem): void{
+    this.cartService.removeItem(item);
+  }
 }
