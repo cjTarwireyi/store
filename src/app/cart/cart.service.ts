@@ -47,4 +47,27 @@ export class CartService {
     this.cart.next({items: filteredItem});
     this._snackBar.open('Item removed from Cart', 'Ok', {duration: 3000});
   }
+
+  onIncrementItemQuantity(item: ICartItem):void {
+    const items = [...this.cart.value.items];
+    const itemsInCart = items.find(_item => item.id === item.id);
+
+    if(itemsInCart)
+      itemsInCart.quantity +=1;
+
+        this.cart.next({items});
+  }
+
+  onDecrementItemQuantity(item: ICartItem):void {
+    const items = [...this.cart.value.items];
+    const itemsInCart = items.find(_item => item.id === item.id);
+    
+    if(itemsInCart && itemsInCart.quantity> 1){
+      itemsInCart.quantity -=1;
+      this.cart.next({items});
+    }      
+    else{
+      this.removeItem(item);
+    }
+  }
 }

@@ -44,4 +44,12 @@ export class CartComponent implements OnInit {
   onRemoveItem(item: ICartItem): void{
     this.cartService.removeItem(item);
   }
+
+  onIncrementItemQuantity(item: ICartItem):void {
+    this.cartService.onIncrementItemQuantity(item);
+  }
+
+  onDecrementItemQuantity(item: ICartItem):void {
+    this.cartService.onDecrementItemQuantity(item);
+  }
 }

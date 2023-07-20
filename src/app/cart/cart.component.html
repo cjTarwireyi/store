@@ -16,9 +16,9 @@
                 <span class="truncate max-w-xs block" *ngIf="column == 'name'">{{element[column]}}</span>
                 
                 <p *ngIf="column == 'quantity'">
-                    <button *ngIf="column == 'quantity'" mat-icon-button><mat-icon>remove</mat-icon></button>
+                    <button (click)="onDecrementItemQuantity (element)" *ngIf="column == 'quantity'" mat-icon-button><mat-icon>remove</mat-icon></button>
                     {{element[column]}}
-                    <button *ngIf="column == 'quantity'" mat-icon-button><mat-icon>add</mat-icon></button>
+                    <button (click)="onIncrementItemQuantity(element)" *ngIf="column == 'quantity'" mat-icon-button><mat-icon>add</mat-icon></button>
                 </p>
 
                 <span  *ngIf="column == 'price'">{{element[column] | currency}}</span>
@@ -99,6 +99,6 @@
 <mat-card class="max-w-7x1-auto" *ngIf="!cart.items.length">
     <p>
         Your cart is empty.
-        <button mat-raised-button routerLink="/home">Start shopping</button>
+        <button mat-raised-button routerLink="/products">Start shopping</button>
     </p>
 </mat-card>
