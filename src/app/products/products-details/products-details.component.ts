@@ -1,15 +1,11 @@
 import { Component } from '@angular/core';
 
 const ROWS_HEIGHT: {[id:number]: number} = {1: 400, 3: 335, 4: 350};
-
 @Component({
-  selector: 'app-home',
- templateUrl:'./home.component.html',
-  styles: [
-  ]
+  selector: 'app-products-details',
+  templateUrl:'./products-details.component.html'
 })
-
-export class HomeComponent {
+export class ProductsDetailsComponent {
   cols=3;
   rowHeight= ROWS_HEIGHT[this.cols];
   category:string | undefined;
