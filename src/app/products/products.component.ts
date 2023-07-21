@@ -15,7 +15,7 @@ export class ProductsComponent implements OnInit, OnDestroy {
   category:string | undefined;
   products: IProduct[] =[];
   sort ='desc';
-  count='12';
+  count='5';
   productsSubscription: Subscription | undefined;
 
   constructor(private cartService :CartService, private storeService :StoreService){}
@@ -25,8 +25,19 @@ export class ProductsComponent implements OnInit, OnDestroy {
     this.rowHeight= ROWS_HEIGHT[colsNumber];
   }
 
+  onItemsCountChange(newCountValue:number):void{
+    this.count = newCountValue.toString();
+    this.getProducts();
+  }
+
+  onSortChange(newSortValue:string): void{
+    this.sort = newSortValue;
+    this.getProducts();
+  }
+
   onShowCategory(newCategory:string):void{
     this.category = newCategory
+    this.getAllProductsByCategory();
   }
   onAddToCart(product:IProduct):void{
     this.cartService.addToCart({
@@ -39,12 +50,17 @@ export class ProductsComponent implements OnInit, OnDestroy {
   }
 
   getProducts():void{
-    this.storeService.getAllProducts(this.count,this.sort)
+    this.productsSubscription= this.storeService.getAllProducts(this.count,this.sort)
     .subscribe(_products =>{
       this.products = _products
     })
   }
-
+  getAllProductsByCategory():void{
+    this.productsSubscription= this.storeService.getAllProductsByCategory(this.count,this.sort,this.category )
+    .subscribe(_products =>{
+      this.products = _products
+    })
+  }
   ngOnInit(): void {
    this.getProducts();
   }
