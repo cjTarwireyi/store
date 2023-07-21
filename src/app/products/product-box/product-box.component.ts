@@ -1,22 +1,21 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { IProduct } from 'src/app/models/product.model';
+import { CurrencyService } from 'src/app/shared/currency.service';
 
 @Component({
   selector: 'app-product-box',
   templateUrl:'./product-box.component.html'
 })
-export class ProductBoxComponent {
+export class ProductBoxComponent implements OnInit {
   @Input() fullWidthMode = false;
+  @Input() product:IProduct | undefined;
   @Output() addToCart = new EventEmitter<IProduct>();
-  product: IProduct ={
-    id:1,
-    title:'Snikers',
-    price:150,
-    category:'shoes',
-    description:'Size 9, male',
-    image:'https://via.placeholder.com/150'
-  };
-  constructor(){}
+  currencyCode:string ='';
+  constructor(private currencyService: CurrencyService){}
+  
+  ngOnInit(): void {
+    this.currencyCode = this.currencyService.getCurrencyCode();
+  }
 
   onAddToCart(): void{
     this.addToCart.emit(this.product);

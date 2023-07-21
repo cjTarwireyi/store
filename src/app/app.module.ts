@@ -25,6 +25,7 @@ import { FiltersComponent } from "./products/filters/filters.component";
 import { ProductBoxComponent } from "./products/product-box/product-box.component";
 import { CartComponent } from "./cart/cart.component";
 import { ProductsComponent } from "./products/products.component";
+import {  HttpClientModule } from "@angular/common/http";
 
 @NgModule({
   declarations: [
@@ -39,6 +40,7 @@ import { ProductsComponent } from "./products/products.component";
   ],
   imports: [
     BrowserModule,
+    HttpClientModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     MatSidenavModule,

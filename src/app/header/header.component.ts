@@ -1,6 +1,7 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { ICart, ICartItem } from '../models/cart.model';
 import { CartService } from '../cart/cart.service';
+import { CurrencyService } from '../shared/currency.service';
 
 @Component({
   selector: 'app-header',
@@ -8,9 +9,10 @@ import { CartService } from '../cart/cart.service';
   styles: [
   ]
 })
-export class HeaderComponent {
+export class HeaderComponent implements OnInit{
   private _cart: ICart = {items: []};
   itemsQuantity = 0 ;
+  currencyCode: string ='';
   @Input()
   get cart(): ICart{
     return this._cart;
@@ -22,8 +24,8 @@ export class HeaderComponent {
     .reduce((prev, current)=> prev+ current,0);
   }
 
-  constructor(private cartService: CartService){}
-
+  constructor(private cartService: CartService, private currencyService: CurrencyService){}
+ 
   getTtotal():number{
     return this.cartService.getTotal(this.cart.items);
   }
@@ -32,7 +34,10 @@ export class HeaderComponent {
     return this.cartService.getSubTotal(item); 
     }
 
-    onClearCart():void{
-      this.cartService.clearCart();
-    }
+  onClearCart():void{
+    this.cartService.clearCart();
+  }
+  ngOnInit(): void {
+    this.currencyCode = this.currencyService.getCurrencyCode();
+  }
 }

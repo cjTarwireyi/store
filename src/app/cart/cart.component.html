@@ -21,9 +21,9 @@
                     <button (click)="onIncrementItemQuantity(element)" *ngIf="column == 'quantity'" mat-icon-button><mat-icon>add</mat-icon></button>
                 </p>
 
-                <span  *ngIf="column == 'price'">{{element[column] | currency}}</span>
+                <span  *ngIf="column == 'price'">{{element[column] | currency:currencyCode}}</span>
 
-                <p  *ngIf="column == 'total'">{{getSubTotal(element) | currency}}</p>
+                <p  *ngIf="column == 'total'">{{getSubTotal(element) | currency:currencyCode}}</p>
 
                 <button (click)="onRemoveItem(element)" class="float-right" mat-mini-fab color="warn" *ngIf="column == 'action'">
                     <mat-icon>close</mat-icon>
@@ -33,7 +33,7 @@
 
             <td mat-footer-cell *matFooterCellDef>
                 <button *ngIf="column == 'product'"  mat-raised-button routerLink="/products">Continue shopping</button>
-                <span *ngIf="column == 'total'" class="font-bold py-5 block">{{getTotal(cart.items) | currency}}</span>
+                <span *ngIf="column == 'total'" class="font-bold py-5 block">{{getTotal(cart.items) | currency:currencyCode}}</span>
                 <button *ngIf="column == 'action'" mat-raised-button color="primary" class="float-right"> Proceed To Checkout</button>
             </td>
             

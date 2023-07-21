@@ -12,7 +12,7 @@ export class CartService {
 
   addToCart(item:ICartItem): void {
       const items = [...this.cart.value.items];
-      const itemsInCart = items.find(_item => item.id === item.id);
+      const itemsInCart = items.find(_item => _item.id === item.id);
 
       if(itemsInCart){
         itemsInCart.quantity +=1;
@@ -61,7 +61,7 @@ export class CartService {
 
   onDecrementItemQuantity(item: ICartItem):void {
     const items = [...this.cart.value.items];
-    const itemsInCart = items.find(_item => item.id === item.id);
+    const itemsInCart = items.find(_item => _item.id === item.id);
     
     if(itemsInCart && itemsInCart.quantity> 1){
       itemsInCart.quantity --;
