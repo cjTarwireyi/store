@@ -49,10 +49,13 @@ export class CartComponent implements OnInit {
   }
 
   onIncrementItemQuantity(item: ICartItem):void {
-    this.cartService.onIncrementItemQuantity(item);
+    this.cartService.incrementItemQuantity(item);
   }
 
   onDecrementItemQuantity(item: ICartItem):void {
-    this.cartService.onDecrementItemQuantity(item);
+    this.cartService.decrementItemQuantity(item);
+  }
+  onCheckout():void{
+    this.cartService.checkOut();
   }
 }

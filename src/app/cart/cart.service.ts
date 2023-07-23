@@ -48,7 +48,7 @@ export class CartService {
     this.NotifyUser('Item removed from Cart',);
   }
 
-  onIncrementItemQuantity(item: ICartItem):void {
+  incrementItemQuantity(item: ICartItem):void {
     const items = [...this.cart.value.items];
     const itemsInCart = items.find(_item => item.id === item.id);
 
@@ -59,7 +59,7 @@ export class CartService {
         this.NotifyUser('One item added to the Cart',);
   }
 
-  onDecrementItemQuantity(item: ICartItem):void {
+  decrementItemQuantity(item: ICartItem):void {
     const items = [...this.cart.value.items];
     const itemsInCart = items.find(_item => _item.id === item.id);
     
@@ -71,6 +71,10 @@ export class CartService {
     else{
       this.removeItem(item);
     }
+  }
+
+  checkOut(): void {
+     //check out implementation here
   }
   private NotifyUser(message:string):void{
     this._snackBar.open(message, 'Ok', {duration: 3000});

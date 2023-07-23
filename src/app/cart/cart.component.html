@@ -34,7 +34,7 @@
             <td mat-footer-cell *matFooterCellDef>
                 <button *ngIf="column == 'product'"  mat-raised-button routerLink="/products">Continue shopping</button>
                 <span *ngIf="column == 'total'" class="font-bold py-5 block">{{getTotal(cart.items) | currency:currencyCode}}</span>
-                <button *ngIf="column == 'action'" mat-raised-button color="primary" class="float-right"> Proceed To Checkout</button>
+                <button *ngIf="column == 'action'" (click)="onCheckout()" mat-raised-button color="primary" class="float-right"> Proceed To Checkout</button>
             </td>
             
         </ng-container>
