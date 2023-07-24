@@ -21,4 +21,8 @@ export class StoreService {
   getAllCategories(): Observable<string[]>{
     return this.httpClient.get<string[]>( `${STORE_BASE_URL}/products/categories`);
      }
+    
+  getProductsPriceInfo():void{
+    // http://localhost:4242/products
+  }
 }

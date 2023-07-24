@@ -2,13 +2,15 @@ import { Injectable } from '@angular/core';
 import { ICart, ICartItem } from '../models/cart.model';
 import {BehaviorSubject} from 'rxjs'
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { HttpClient } from '@angular/common/http';
+import { loadStripe } from '@stripe/stripe-js';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CartService {
   cart = new BehaviorSubject<ICart>({items:[]});
-  constructor(private _snackBar: MatSnackBar) { }
+  constructor(private _snackBar: MatSnackBar, private httpClient: HttpClient) { }
 
   addToCart(item:ICartItem): void {
       const items = [...this.cart.value.items];
@@ -74,7 +76,14 @@ export class CartService {
   }
 
   checkOut(): void {
-     //check out implementation here
+     this.httpClient.post('http://localhost:4242/checkout',{
+      items: this.cart.value.items
+     }).subscribe(async (res:any)=>{
+        let stripe = await loadStripe('pk_test_51NXLNCAQcbnrGaFb55FKGImN4fjxFXzvy02rWY4f0huawDgG9P7SIhbNLhT0cQ3EQMvTNlRmcQS46ejoVgPrMr8D00hnuRidUg');
+        stripe?.redirectToCheckout({
+          sessionId: res
+        })
+     });
   }
   private NotifyUser(message:string):void{
     this._snackBar.open(message, 'Ok', {duration: 3000});
