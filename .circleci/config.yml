@@ -16,6 +16,9 @@ jobs:
     # A list of available CircleCI Docker Convenience Images are available here: https://circleci.com/developer/images/image/cimg/node
     docker:
       - image: cimg/node:16-webbrowsers
+        auth:
+          username: cornelioust  # can specify string literal values
+          password: $DOCKERHUB_PASSWORD  # or project environment variable reference
     # Then run your tests!
     # CircleCI will report the results back to your VCS provider.
     steps:
