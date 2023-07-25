@@ -7,9 +7,11 @@ import { StoreService } from 'src/app/store/store.service';
   templateUrl:'./filters.component.html'
 })
 export class FiltersComponent implements OnInit, OnDestroy {
+  
   @Output() showCategory = new EventEmitter<string>();
   categories: string[] = [];
-categoriesSubscription: Subscription | undefined;
+  categoriesSubscription: Subscription | undefined;
+
   constructor(private storeService: StoreService){}
  
   onShowCategory(category:string):void{

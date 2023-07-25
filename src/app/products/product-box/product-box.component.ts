@@ -11,6 +11,7 @@ export class ProductBoxComponent implements OnInit {
   @Input() product:IProduct | undefined;
   @Output() addToCart = new EventEmitter<IProduct>();
   currencyCode:string ='';
+  
   constructor(private currencyService: CurrencyService){}
   
   ngOnInit(): void {
