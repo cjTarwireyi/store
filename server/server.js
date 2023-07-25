@@ -60,5 +60,5 @@ app.get("/products", async(req,res, next)=>{
 //     recurring: {interval: 'month'},
 //     product: 'prod_OK0FICQZGMnj9t',
 //   });
-
- app.listen(4242,() => console.log("app is running on 4242"));
+const PORT = process.env.PORT || 4242;
+ app.listen(PORT,() => console.log("app is running on 4242"));
