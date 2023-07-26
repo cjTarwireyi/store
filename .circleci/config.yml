@@ -37,7 +37,7 @@ jobs:
        #   command: npm test
       - run:
           command: npm run build
-          name: Build application for production
+          name: Build application for production .
       - run:
           command: docker build -t storecollection.azurecr.io/store:1.0
           name: Docker build
