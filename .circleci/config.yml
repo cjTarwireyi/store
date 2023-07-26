@@ -24,7 +24,7 @@ jobs:
     steps:
       # Checkout the code as the first step.
       - checkout
-      - setup_rempte_docker
+      - setup_remote_docker
       - restore_cache:
           key: npm-dependency-cache-{{ checksum "package.json" }}
       # Next, the node orb's install-packages step will install the dependencies from a package.json.
