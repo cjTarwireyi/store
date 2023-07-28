@@ -1,4 +1,3 @@
-import { identifierName } from '@angular/compiler';
 import { Component, OnInit } from '@angular/core';
 import { ICart, ICartItem } from 'src/app/models/cart.model';
 import { CartService } from './cart.service';
