@@ -16,6 +16,7 @@ export class ProductsComponent implements OnInit, OnDestroy {
   products: IProduct[] =[];
   sort ='desc';
   count='5';
+  errorMessage="";
   productsSubscription: Subscription | undefined;
 
   constructor(private cartService :CartService, private storeService :StoreService){}
@@ -51,8 +52,9 @@ export class ProductsComponent implements OnInit, OnDestroy {
 
   getProducts():void{
     this.productsSubscription= this.storeService.getAllProducts(this.count,this.sort)
-    .subscribe(_products =>{
-      this.products = _products
+    .subscribe({
+      next: _products => this.products = _products,
+      error: err => this.errorMessage = err
     })
   }
   getAllProductsByCategory():void{
