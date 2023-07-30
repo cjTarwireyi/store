@@ -2,7 +2,7 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { IProduct } from '../models/product.model';
 import { CartService } from '../cart/cart.service';
 import { StoreService } from '../store/store.service';
-import { Observable } from 'rxjs';
+import { EMPTY, Observable, catchError } from 'rxjs';
 
 const ROWS_HEIGHT: {[id:number]: number} = {1: 400, 3: 335, 4: 350};
 @Component({
@@ -50,7 +50,13 @@ export class ProductsComponent implements OnInit, OnDestroy {
   }
 
   getProducts():void{
-    this.products$ = this.storeService.getAllProducts(this.count,this.sort);
+    this.products$ = this.storeService.getAllProducts(this.count,this.sort)
+    .pipe(
+      catchError(err => {
+        this.errorMessage = err;
+        return EMPTY
+      })
+    );
   }
   getAllProductsByCategory():void{
    this.products$ = this.storeService.getAllProductsByCategory(this.count,this.sort,this.category )
