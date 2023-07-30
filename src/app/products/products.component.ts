@@ -2,7 +2,7 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { IProduct } from '../models/product.model';
 import { CartService } from '../cart/cart.service';
 import { StoreService } from '../store/store.service';
-import { Subscription } from 'rxjs';
+import { Observable } from 'rxjs';
 
 const ROWS_HEIGHT: {[id:number]: number} = {1: 400, 3: 335, 4: 350};
 @Component({
@@ -13,11 +13,10 @@ export class ProductsComponent implements OnInit, OnDestroy {
   cols=3;
   rowHeight= ROWS_HEIGHT[this.cols];
   category:string | undefined;
-  products: IProduct[] =[];
+  products$: Observable<IProduct[]> | undefined;
   sort ='desc';
   count='5';
-  errorMessage="";
-  productsSubscription: Subscription | undefined;
+  errorMessage=""; 
 
   constructor(private cartService :CartService, private storeService :StoreService){}
  
@@ -51,25 +50,16 @@ export class ProductsComponent implements OnInit, OnDestroy {
   }
 
   getProducts():void{
-    this.productsSubscription= this.storeService.getAllProducts(this.count,this.sort)
-    .subscribe({
-      next: _products => this.products = _products,
-      error: err => this.errorMessage = err
-    })
+    this.products$ = this.storeService.getAllProducts(this.count,this.sort);
   }
   getAllProductsByCategory():void{
-    this.productsSubscription= this.storeService.getAllProductsByCategory(this.count,this.sort,this.category )
-    .subscribe(_products =>{
-      this.products = _products
-    })
+   this.products$ = this.storeService.getAllProductsByCategory(this.count,this.sort,this.category )
   }
   ngOnInit(): void {
    this.getProducts();
   }
 
   ngOnDestroy(): void {
-    if(this.productsSubscription){
-      this.productsSubscription.unsubscribe();
-    }
+
   }
 }
