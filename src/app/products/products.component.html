@@ -21,5 +21,7 @@ class="min-h-full mx-auto border-x">
       
 
    </mat-grid-list>
+   <!-- TODO find better way to display error message -->
+   <div *ngIf="errorMessage">{{errorMessage}}</div>
     </mat-drawer-content>
 </mat-drawer-container>

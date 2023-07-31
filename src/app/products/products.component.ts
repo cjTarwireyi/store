@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnDestroy, OnInit } from '@angular/core';
 import { IProduct } from '../models/product.model';
 import { CartService } from '../cart/cart.service';
 import { StoreService } from '../store/store.service';
@@ -7,7 +7,8 @@ import { EMPTY, Observable, catchError } from 'rxjs';
 const ROWS_HEIGHT: {[id:number]: number} = {1: 400, 3: 335, 4: 350};
 @Component({
   selector: 'app-products-details',
-  templateUrl:'./products.component.html'
+  templateUrl:'./products.component.html',
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ProductsComponent implements OnInit, OnDestroy {
   cols=3;

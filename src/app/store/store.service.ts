@@ -2,7 +2,7 @@ import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, catchError, tap, throwError } from 'rxjs';
 import { IProduct } from '../models/product.model';
-const STORE_BASE_URL = 'https://fakestoreapis.com';
+const STORE_BASE_URL = 'https://fakestoreapi.com';
 @Injectable({
   providedIn: 'root'
 })
