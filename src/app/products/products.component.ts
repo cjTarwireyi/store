@@ -12,6 +12,8 @@ const ROWS_HEIGHT: {[id:number]: number} = {1: 400, 3: 335, 4: 350};
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ProductsComponent implements OnInit, OnDestroy {
+  //TODO implement login=c to ensure that whenever category is selected it is applied for filtering
+  //and also clear category filtering
   cols=3;
   rowHeight= ROWS_HEIGHT[this.cols];
   category:string | undefined;
@@ -20,12 +22,13 @@ export class ProductsComponent implements OnInit, OnDestroy {
   count='5';
   errorMessage=""; 
   filter :IFilter ={limit:"5", sort:"desc",category:undefined}
+  loadByCategory = false;
 
   constructor(private cartService :CartService, private storeService :StoreService){}
 
   products$ = combineLatest({prod:this.storeService.products$, prodCat:this.storeService.productsFilteredByCategory$})
   .pipe(map((products )=>{
-      return products.prod.length>0 ? products.prod : products.prodCat;
+      return this.loadByCategory ? products.prodCat: products.prod;
   }))
   
   // this.storeService.products$.pipe(
@@ -65,6 +68,7 @@ export class ProductsComponent implements OnInit, OnDestroy {
   }
 
   getProducts():void{
+    this.loadByCategory=false;
     let filter :IFilter ={limit:this.count, sort:this.sort,category:this.category}
     this.storeService.filterChanged(filter);
     // this.products$ = this.storeService.getAllProducts(this.count,this.sort)
@@ -76,6 +80,7 @@ export class ProductsComponent implements OnInit, OnDestroy {
     // );
   }
   getAllProductsByCategory():void{
+    this.loadByCategory=true;
     let filter :IFilter ={limit:this.count, sort:this.sort,category:this.category}
     this.storeService.categoryFilterChanged(filter);
   //  let filter :IFilter ={limit:this.count, sort:this.sort,category:this.category}

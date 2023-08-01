@@ -9,11 +9,11 @@ const STORE_BASE_URL = 'https://fakestoreapi.com';
 })
 export class StoreService {
   private  filter :IFilter ={limit:"5", sort:"desc",category:undefined}
-private filterSubject = new BehaviorSubject<IFilter>(this.filter);
-private categoryFilterSubject = new BehaviorSubject<IFilter>(this.filter);
+  private filterSubject = new BehaviorSubject<IFilter>(this.filter);
+  private categoryFilterSubject = new BehaviorSubject<IFilter>(this.filter);  
 
-filterAction$ = this.filterSubject.asObservable();
-categoryFilterAction$ = this.categoryFilterSubject.asObservable();
+  filterAction$ = this.filterSubject.asObservable();
+  categoryFilterAction$ = this.categoryFilterSubject.asObservable();
 
   products$ = this.filterAction$.pipe(
     switchMap(filter => this.httpClient.get<IProduct[]>(`${STORE_BASE_URL}/products?sort=${filter.sort}&limit=${filter.limit}`)
