@@ -1,30 +1,52 @@
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable, catchError, tap, throwError } from 'rxjs';
+import { BehaviorSubject, Observable, Subject, catchError, switchMap, tap, throwError } from 'rxjs';
 import { IProduct } from '../models/product.model';
+import { IFilter } from '../models/filter.model';
 const STORE_BASE_URL = 'https://fakestoreapi.com';
 @Injectable({
   providedIn: 'root'
 })
 export class StoreService {
+  private  filter :IFilter ={limit:"5", sort:"desc",category:undefined}
+private filterSubject = new BehaviorSubject<IFilter>(this.filter);
+private categoryFilterSubject = new BehaviorSubject<IFilter>(this.filter);
+
+filterAction$ = this.filterSubject.asObservable();
+categoryFilterAction$ = this.categoryFilterSubject.asObservable();
+
+  products$ = this.filterAction$.pipe(
+    switchMap(filter => this.httpClient.get<IProduct[]>(`${STORE_BASE_URL}/products?sort=${filter.sort}&limit=${filter.limit}`)
+    .pipe(
+      tap(data => console.log(data)),
+      catchError(this.handleError)
+    )));
+
+    productsFilteredByCategory$ = this.categoryFilterAction$.pipe(
+      switchMap(filter => this.httpClient.get<IProduct[]>( `${STORE_BASE_URL}/products/category/${filter.category}?sort=${filter.sort}&limit=${filter.limit}`)
+      .pipe(
+        tap(data => console.log(data)),
+        catchError(this.handleError)
+      )));
 
   constructor(private httpClient : HttpClient) { }
 
-  getAllProducts(limit='12', sort = 'desc'): Observable<IProduct[]>{
+  filterChanged(filter:IFilter):void{
+    this.filterSubject.next(filter);
+  }
+
+  categoryFilterChanged(filter:IFilter):void{
+    this.categoryFilterSubject.next(filter);
+  }
+
+  getAllProductsByCategory(fiter:IFilter): Observable<IProduct[]>{
     return this.httpClient.get<IProduct[]>(
-      `${STORE_BASE_URL}/products?sort=${sort}&limit=${limit}`)
-      .pipe(
-        tap(products => console.log("Products: ", JSON.stringify(products))),
-        catchError(this.handleError)
-      );
-  } 
-  getAllProductsByCategory(limit='12', sort = 'desc', category? : string): Observable<IProduct[]>{
-    return this.httpClient.get<IProduct[]>(
-      `${STORE_BASE_URL}/products/category/${category}?sort=${sort}&limit=${limit}`)
+      `${STORE_BASE_URL}/products/category/${fiter.category}?sort=${fiter.sort}&limit=${fiter.limit}`)
       .pipe(
         tap(data => console.log('products: ', JSON.stringify(data)))
       );
   }
+
   getAllCategories(): Observable<string[]>{
     return this.httpClient.get<string[]>( `${STORE_BASE_URL}/products/categories`)
     .pipe(
@@ -35,6 +57,7 @@ export class StoreService {
   getProductsPriceInfo():void{
     // http://localhost:4242/products
   }
+
   private handleError(err: HttpErrorResponse) {
     // in a real world app, we may send the server to some remote logging infrastructure
     // instead of just logging it to the console
