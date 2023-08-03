@@ -2,7 +2,7 @@ import { ChangeDetectionStrategy, Component, OnDestroy, OnInit } from '@angular/
 import { IProduct } from '../models/product.model';
 import { CartService } from '../cart/cart.service';
 import { StoreService } from '../store/store.service';
-import { EMPTY, Observable, catchError, combineLatest, map } from 'rxjs';
+import { EMPTY, catchError, combineLatest, map } from 'rxjs';
 import { IFilter } from '../models/filter.model';
 
 const ROWS_HEIGHT: {[id:number]: number} = {1: 400, 3: 335, 4: 350};
@@ -16,7 +16,6 @@ export class ProductsComponent implements OnInit, OnDestroy {
   cols=3;
   rowHeight= ROWS_HEIGHT[this.cols];
   category:string | undefined;
-  //products$: Observable<IProduct[]> | undefined;
   sort ='desc';
   count='5';
   errorMessage=""; 
@@ -28,14 +27,11 @@ export class ProductsComponent implements OnInit, OnDestroy {
   products$ = combineLatest({prod:this.storeService.products$, prodCat:this.storeService.productsFilteredByCategory$})
   .pipe(map((products )=>{
       return this.loadByCategory ? products.prodCat: products.prod;
+  }),
+  catchError(err =>{
+    this.errorMessage = err;
+    return EMPTY
   }))
-  
-  // this.storeService.products$.pipe(
-  //   catchError(err =>{
-  //     this.errorMessage = err;
-  //     return EMPTY;
-  //   })
-  // );
 
   onColumnsCountChange(colsNumber : number):void{
     this.cols= colsNumber;

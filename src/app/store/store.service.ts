@@ -1,6 +1,6 @@
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, Observable, Subject, catchError, switchMap, tap, throwError } from 'rxjs';
+import { BehaviorSubject, Observable, catchError, switchMap, tap, throwError } from 'rxjs';
 import { IProduct } from '../models/product.model';
 import { IFilter } from '../models/filter.model';
 const STORE_BASE_URL = 'https://fakestoreapi.com';
@@ -49,14 +49,10 @@ export class StoreService {
 
   getAllCategories(): Observable<string[]>{
     return this.httpClient.get<string[]>( `${STORE_BASE_URL}/products/categories`)
-    .pipe(
-      catchError(this.handleError)
-    );
-     }
-    
-  getProductsPriceInfo():void{
-    // http://localhost:4242/products
-  }
+      .pipe(
+        catchError(this.handleError)
+      );
+    }    
 
   private handleError(err: HttpErrorResponse) {
     // in a real world app, we may send the server to some remote logging infrastructure
