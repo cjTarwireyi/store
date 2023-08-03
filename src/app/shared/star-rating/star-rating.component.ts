@@ -17,7 +17,7 @@ export class StarRatingComponent implements OnChanges, OnInit {
 
 
   cropWidth = 75;
-  rating= 3;
+  rating= '';
   ratingVotes: IRatingModel ={
     one: 1,
     two: 0,
@@ -26,10 +26,12 @@ export class StarRatingComponent implements OnChanges, OnInit {
     five: 1
   }
   ngOnChanges(changes: SimpleChanges): void {
-     this.cropWidth = this.rating * 75 / 5;
+    // this.cropWidth = this.rating * 75 / 5;
   }
   ngOnInit(): void {
-    this.cropWidth = this.calculateAverageRating() * 75 / 5;
+    let avarageRating = this.calculateAverageRating();
+    this.rating = avarageRating.toFixed(1);
+    this.cropWidth = avarageRating * 75 / 5; 
   }
   onClick():void{
 
