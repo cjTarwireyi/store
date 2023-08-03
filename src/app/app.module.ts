@@ -26,6 +26,7 @@ import { ProductBoxComponent } from "./products/product-box/product-box.componen
 import { CartComponent } from "./cart/cart.component";
 import { ProductsComponent } from "./products/products.component";
 import {  HttpClientModule } from "@angular/common/http";
+import { StarRatingComponent } from './shared/star-rating/star-rating.component';
 
 @NgModule({
   declarations: [
@@ -37,6 +38,7 @@ import {  HttpClientModule } from "@angular/common/http";
     ProductBoxComponent,
     CartComponent,
     ProductsComponent,
+    StarRatingComponent,
   ],
   imports: [
     BrowserModule,
