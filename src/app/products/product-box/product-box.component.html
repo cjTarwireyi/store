@@ -14,7 +14,7 @@
             <span class="text-red-400">
                 {{product?.price | currency : currencyCode}}
             </span>
-            <app-star-rating></app-star-rating>
+            <app-star-rating [product] ="product"></app-star-rating>
             <button (click)="onAddToCart()" title="Add To Cart">
                 <mat-icon class="text-gray-500">
                     shopping_cart

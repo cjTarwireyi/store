@@ -4,5 +4,8 @@ export interface IProduct{
     price:number,
     category: string,
     description: string,
-    image:string
+    image:string,
+    cropWidth:number,
+    rating:string,
+
 }
