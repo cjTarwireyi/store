@@ -7,5 +7,6 @@ export interface IProduct{
     image:string,
     cropWidth:number,
     rating:string,
+    votes:number
 
 }

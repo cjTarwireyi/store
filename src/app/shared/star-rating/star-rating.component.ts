@@ -47,6 +47,7 @@ export class StarRatingComponent implements OnChanges, OnInit {
     this.ratingVotes = this.ratingsCollection.find(e => e.productId ==this.product?.id)
     if(this.product!= null){
     let avarageRating = this.calculateAverageRating();
+    this.product.votes = this.totalVotesSum();
     this.product.rating = avarageRating.toFixed(1);
     this.product.cropWidth = avarageRating * 75 / 5;}
   }
@@ -58,6 +59,12 @@ export class StarRatingComponent implements OnChanges, OnInit {
       return 0;
     }
     return (this.ratingVotes.one * 1 + this.ratingVotes.two * 2 + this.ratingVotes.three * 3 + this.ratingVotes.four * 4 + this.ratingVotes.five * 5)
-    /(this.ratingVotes.one + this.ratingVotes.two  + this.ratingVotes.three  + this.ratingVotes.four  + this.ratingVotes.five )
+    /this.totalVotesSum();
+  }
+  totalVotesSum():number{
+    if(this.ratingVotes == null){
+      return 0;
+    }
+    return (this.ratingVotes.one + this.ratingVotes.two  + this.ratingVotes.three  + this.ratingVotes.four  + this.ratingVotes.five );
   }
 }
