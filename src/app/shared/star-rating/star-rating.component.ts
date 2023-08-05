@@ -1,4 +1,4 @@
-import { Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
+import { Component, Input, OnInit, SimpleChanges } from '@angular/core';
 import { IProduct } from 'src/app/models/product.model';
 import { IRatingModel } from 'src/app/models/rating.model';
 
@@ -14,7 +14,7 @@ import { IRatingModel } from 'src/app/models/rating.model';
     }`
   ]
 })
-export class StarRatingComponent implements OnChanges, OnInit {
+export class StarRatingComponent implements  OnInit {
 @Input() product : IProduct | undefined ;
   cropWidth = 75;
   rating= '';
@@ -40,9 +40,7 @@ export class StarRatingComponent implements OnChanges, OnInit {
     {productId:18, one: 1, two: 10, three: 0, four: 1,   five: 3},
     {productId:19, one: 4, two: 0, three: 20, four: 1,   five: 1},
     {productId:20, one: 5, two: 0, three: 30, four: 1,   five: 1}]
-  ngOnChanges(changes: SimpleChanges): void {
-    // this.cropWidth = this.rating * 75 / 5;
-  }
+  
   ngOnInit(): void {
     this.ratingVotes = this.ratingsCollection.find(e => e.productId ==this.product?.id)
     if(this.product!= null){
