@@ -29,6 +29,7 @@ import {  HttpClientModule } from "@angular/common/http";
 import { StarRatingComponent } from './shared/star-rating/star-rating.component';
 import { ReviewListComponent } from './review-list/review-list.component';
 import { NgxPayPalModule } from "ngx-paypal";
+import { PaymentSuccessComponent } from './payment-success/payment-success.component';
 
 @NgModule({
   declarations: [
@@ -42,6 +43,7 @@ import { NgxPayPalModule } from "ngx-paypal";
     ProductsComponent,
     StarRatingComponent,
     ReviewListComponent,
+    PaymentSuccessComponent,
   ],
   imports: [
     BrowserModule,

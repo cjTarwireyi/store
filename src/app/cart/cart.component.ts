@@ -4,6 +4,7 @@ import { CartService } from './cart.service';
 import { CurrencyService } from '../shared/currency.service';
 import { ICreateOrderRequest, IPayPalConfig } from 'ngx-paypal';
 import { environment } from 'src/environments/environment';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-cart',
@@ -28,7 +29,7 @@ export class CartComponent implements OnInit {
     'total',
     'action'
    ]
-   constructor(private cartService: CartService, private currencyService: CurrencyService){}
+   constructor(private cartService: CartService, private currencyService: CurrencyService, private router: Router){}
 
    getSubTotal(item:ICartItem):number{
     return this.cartService.getSubTotal(item); 
@@ -110,7 +111,7 @@ export class CartComponent implements OnInit {
         },
         onClientAuthorization: (data) => {
             console.log('onClientAuthorization - you should probably inform your server about completed transaction at this point', data);
-            //this.showSuccess = true;
+            this.router.navigate(['/paymentSuccess'])
         },
         onCancel: (data, actions) => {
             console.log('OnCancel', data, actions);
