@@ -28,6 +28,7 @@ import { ProductsComponent } from "./products/products.component";
 import {  HttpClientModule } from "@angular/common/http";
 import { StarRatingComponent } from './shared/star-rating/star-rating.component';
 import { ReviewListComponent } from './review-list/review-list.component';
+import { NgxPayPalModule } from "ngx-paypal";
 
 @NgModule({
   declarations: [
@@ -60,6 +61,7 @@ import { ReviewListComponent } from './review-list/review-list.component';
     MatBadgeModule,
     MatSnackBarModule,
     MatTreeModule,
+    NgxPayPalModule
   ],
   providers: [],
   bootstrap: [AppComponent],

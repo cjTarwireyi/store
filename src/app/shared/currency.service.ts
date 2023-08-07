@@ -7,6 +7,6 @@ export class CurrencyService {
 
   constructor() { }
   getCurrencyCode():string{
-    return ''
+    return 'USD'
   }
 }
