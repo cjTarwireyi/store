@@ -30,6 +30,7 @@ import { StarRatingComponent } from './shared/star-rating/star-rating.component'
 import { ReviewListComponent } from './review-list/review-list.component';
 import { NgxPayPalModule } from "ngx-paypal";
 import { PaymentSuccessComponent } from './payment-success/payment-success.component';
+import { PaymentOptionsComponent } from './payment-options/payment-options.component';
 
 @NgModule({
   declarations: [
@@ -44,6 +45,7 @@ import { PaymentSuccessComponent } from './payment-success/payment-success.compo
     StarRatingComponent,
     ReviewListComponent,
     PaymentSuccessComponent,
+    PaymentOptionsComponent,
   ],
   imports: [
     BrowserModule,
