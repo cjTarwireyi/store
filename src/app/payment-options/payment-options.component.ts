@@ -28,7 +28,10 @@ export class PaymentOptionsComponent implements OnInit{
 
   getTotal(items:ICartItem[]):number{
     return this.cartService.getTotal(items);
-    } 
+  } 
+  payWithStripe(){
+     this.cartService.payWithStripe();
+  }
     
   private initConfig(): void {
     this.payPalConfig = {

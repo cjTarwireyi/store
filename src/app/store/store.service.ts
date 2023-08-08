@@ -3,7 +3,8 @@ import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable, catchError, switchMap, tap, throwError } from 'rxjs';
 import { IProduct } from '../models/product.model';
 import { IFilter } from '../models/filter.model';
-const STORE_BASE_URL = 'https://fakestoreapi.com';
+const STORE_BASE_URL = 'https://fakestoreapi.com'//'assets/products.json';'assets/products.json';;
+
 @Injectable({
   providedIn: 'root'
 })
@@ -17,6 +18,7 @@ export class StoreService {
 
   products$ = this.filterAction$.pipe(
     switchMap(filter => this.httpClient.get<IProduct[]>(`${STORE_BASE_URL}/products?sort=${filter.sort}&limit=${filter.limit}`)
+    //switchMap(filter => this.httpClient.get<IProduct[]>(`${STORE_BASE_URL}`)
     .pipe(
       tap(data => console.log(data)),
       catchError(this.handleError)

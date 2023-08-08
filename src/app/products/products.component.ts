@@ -25,6 +25,7 @@ export class ProductsComponent implements OnInit, OnDestroy {
   constructor(private cartService :CartService, private storeService :StoreService){}
 
   products$ = combineLatest({prod:this.storeService.products$, prodCat:this.storeService.productsFilteredByCategory$})
+ // products$ = combineLatest({prod:this.storeService.products$, prodCat:this.storeService.products$})
   .pipe(map((products )=>{
       return this.loadByCategory ? products.prodCat: products.prod;
   }),

@@ -74,7 +74,7 @@ export class CartService {
     }
   }
 
-  checkOut(): void {
+  payWithStripe(): void {
     this.httpClient
       .post("https://store-checkout.onrender.com/checkout", {
         items: this.cart.value.items,

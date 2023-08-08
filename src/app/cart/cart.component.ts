@@ -58,8 +58,7 @@ export class CartComponent implements OnInit {
   onDecrementItemQuantity(item: ICartItem):void {
     this.cartService.decrementItemQuantity(item);
   }
-  onCheckout():void{
-   // this.cartService.checkOut();
+  onCheckout():void{   
    this.router.navigate(['/payment'])
   }
 

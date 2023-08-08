@@ -1,9 +1,31 @@
 
-<div class="align-middle">
-    <div class="card" style="width: 18rem;">    
+<!-- <div class="container"> -->
+    <div class="card center-content" style="width: 18rem;">    
         <div class="card-body">
-          <h5 class="card-title">Card title</h5>
+          <h5 class="card-title"><strong>Payment Options</strong></h5>
           <ngx-paypal [config]="payPalConfig"></ngx-paypal>
+          <button  mat-raised-button color="primary" class="float-right stripe-button"> Stripe</button>
+         
         </div>
       </div>
-</div>
+<!-- </div> -->
+
+<style>
+    .container {
+  font-family: arial;
+  font-size: 24px;
+  margin: 25px;
+  width: 350px;
+  height: 200px;
+  outline: dashed 1px black;
+  text-align: center;
+}
+.center-content {
+    margin-left: 40%;
+    margin-top: 10%;
+    display:  flex;
+}
+.stripe-button{
+    width: 255px;
+}
+</style>
