@@ -1,8 +1,6 @@
 import { Component, EventEmitter, OnDestroy, OnInit, Output, ViewChild } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { StoreService } from 'src/app/store/store.service';
-import { MatSelect } from '@angular/material/select';
-import { MatOption } from '@angular/material/core';
 import { MatListOption, MatSelectionList } from '@angular/material/list';
 
 @Component({

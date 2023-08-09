@@ -2,8 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { ICart, ICartItem } from 'src/app/models/cart.model';
 import { CartService } from './cart.service';
 import { CurrencyService } from '../shared/currency.service';
-import { ICreateOrderRequest, IPayPalConfig } from 'ngx-paypal';
-import { environment } from 'src/environments/environment';
 import { Router } from '@angular/router';
 
 @Component({
