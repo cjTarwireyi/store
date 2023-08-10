@@ -2,7 +2,7 @@ import { ChangeDetectionStrategy, Component, OnDestroy, OnInit } from '@angular/
 import { IProduct } from '../models/product.model';
 import { CartService } from '../cart/cart.service';
 import { StoreService } from '../store/store.service';
-import { EMPTY, catchError, combineLatest, map } from 'rxjs';
+import { EMPTY, catchError, combineLatest, map, takeUntil } from 'rxjs';
 import { IFilter } from '../models/filter.model';
 
 const ROWS_HEIGHT: {[id:number]: number} = {1: 400, 3: 335, 4: 350};
@@ -13,7 +13,7 @@ const ROWS_HEIGHT: {[id:number]: number} = {1: 400, 3: 335, 4: 350};
 })
 export class ProductsComponent implements OnInit, OnDestroy {
 
-  cols=3;
+  cols = 3;
   rowHeight= ROWS_HEIGHT[this.cols];
   category:string | undefined;
   sort ='desc';
@@ -76,9 +76,18 @@ export class ProductsComponent implements OnInit, OnDestroy {
   }
   ngOnInit(): void {
     this.getProducts();
+
+  }
+  onResize(event:any) {
+    if(event.target.innerWidth <= 1037){
+      this.cols = 1;
+    }else{
+      this.cols = 3;
+    }
+    
   }
 
   ngOnDestroy(): void {
-
+ 
   }
 }

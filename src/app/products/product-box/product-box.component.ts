@@ -4,7 +4,8 @@ import { CurrencyService } from 'src/app/shared/currency.service';
 
 @Component({
   selector: 'app-product-box',
-  templateUrl:'./product-box.component.html'
+  templateUrl:'./product-box.component.html',
+  styleUrls:['./product-box.component.css']
 })
 export class ProductBoxComponent implements OnInit {
   @Input() fullWidthMode = false;
