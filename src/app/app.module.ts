@@ -34,6 +34,8 @@ import { PaymentOptionsComponent } from './payment-options/payment-options.compo
 import { FeaturedCategoriesComponent } from './featured-categories/featured-categories.component';
 import { FeaturedProductsComponent } from './featured-products/featured-products.component';
 import { TestimonialComponent } from './testimonial/testimonial.component';
+import { BrandsComponent } from './brands/brands.component';
+import { FooterComponent } from './footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -52,6 +54,8 @@ import { TestimonialComponent } from './testimonial/testimonial.component';
     FeaturedCategoriesComponent,
     FeaturedProductsComponent,
     TestimonialComponent,
+    BrandsComponent,
+    FooterComponent,
   ],
   imports: [
     BrowserModule,

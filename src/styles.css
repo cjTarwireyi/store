@@ -52,6 +52,9 @@ body { margin: 0; font-family: 'Poppins', sans-serif;}
     margin-bottom: 50px;
     transition: transform 0.5s;
  }
+ .col-5{
+    width: 160px;
+ }
  .small-container{
     max-width: 1080px;
     margin: auto;
