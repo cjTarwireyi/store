@@ -6,8 +6,7 @@ import { CurrencyService } from '../shared/currency.service';
 @Component({
   selector: 'app-header',
   templateUrl:'./header.component.html',
-  styles: [
-  ]
+  styleUrls: ['./header.component.css']
 })
 export class HeaderComponent implements OnInit{
   private _cart: ICart = {items: []};

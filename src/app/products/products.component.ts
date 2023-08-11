@@ -9,6 +9,7 @@ const ROWS_HEIGHT: {[id:number]: number} = {1: 400, 3: 335, 4: 350};
 @Component({
   selector: 'app-products-details',
   templateUrl:'./products.component.html',
+  styleUrls:['./products.component.css'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ProductsComponent implements OnInit, OnDestroy {

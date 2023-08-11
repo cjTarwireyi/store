@@ -1,0 +1,25 @@
+.col-4 img {
+    width  :100%;
+ }
+ h4{
+    color: #555;
+    font-weight: normal;
+ }
+ .col-4 p{
+    font-size: 14px;
+ }
+ .col-4:hover{
+    transform:translateY(-5px) ;
+ }
+ .col-2 .offer-img{
+    max-width: 500px;
+    padding: 50px;
+ }
+ .offer{
+    background: radial-gradient(#fff, #20468b) ;
+    margin-top: 80px;
+    padding:30px 0
+ }
+ small{
+    color: #555;
+}

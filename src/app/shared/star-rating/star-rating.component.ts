@@ -16,6 +16,7 @@ import { IRatingModel } from 'src/app/models/rating.model';
 })
 export class StarRatingComponent implements  OnInit {
 @Input() product : IProduct | undefined ;
+@Input() showVotes = true
   cropWidth = 75;
   rating= '';
   ratingVotes: IRatingModel | undefined;

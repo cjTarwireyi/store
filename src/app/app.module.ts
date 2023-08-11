@@ -31,6 +31,9 @@ import { ReviewListComponent } from './review-list/review-list.component';
 import { NgxPayPalModule } from "ngx-paypal";
 import { PaymentSuccessComponent } from './payment-success/payment-success.component';
 import { PaymentOptionsComponent } from './payment-options/payment-options.component';
+import { FeaturedCategoriesComponent } from './featured-categories/featured-categories.component';
+import { FeaturedProductsComponent } from './featured-products/featured-products.component';
+import { TestimonialComponent } from './testimonial/testimonial.component';
 
 @NgModule({
   declarations: [
@@ -46,6 +49,9 @@ import { PaymentOptionsComponent } from './payment-options/payment-options.compo
     ReviewListComponent,
     PaymentSuccessComponent,
     PaymentOptionsComponent,
+    FeaturedCategoriesComponent,
+    FeaturedProductsComponent,
+    TestimonialComponent,
   ],
   imports: [
     BrowserModule,
