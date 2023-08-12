@@ -23,3 +23,8 @@
  small{
     color: #555;
 }
+@media only screen and (max-width: 600px) {
+   .col-2 .offer-img{
+      max-width: 300px;
+   }
+}

@@ -12,6 +12,7 @@ export class HeaderComponent implements OnInit{
   private _cart: ICart = {items: []};
   itemsQuantity = 0 ;
   currencyCode: string ='';
+  menuItems: HTMLElement | null = null
   @Input()
   get cart(): ICart{
     return this._cart;
@@ -23,7 +24,9 @@ export class HeaderComponent implements OnInit{
     .reduce((prev, current)=> prev+ current,0);
   }
 
-  constructor(private cartService: CartService, private currencyService: CurrencyService){}
+  constructor(private cartService: CartService, private currencyService: CurrencyService){
+    
+  }
  
   getTtotal():number{
     return this.cartService.getTotal(this.cart.items);
@@ -36,7 +39,18 @@ export class HeaderComponent implements OnInit{
   onClearCart():void{
     this.cartService.clearCart();
   }
+
+  menuToggle(): void{
+   if(this.menuItems ){   
+      this.menuItems.style.maxHeight = this.menuItems.style.maxHeight =="0px"
+      ? this.menuItems.style.maxHeight="200px"
+      :this.menuItems.style.maxHeight="0px"   
+   } 
+  }
+
   ngOnInit(): void {
     this.currencyCode = this.currencyService.getCurrencyCode();
+    this.menuItems = document.getElementById("menuItems");
+    
   }
 }
