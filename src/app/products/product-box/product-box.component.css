@@ -1,19 +1,55 @@
-
+/* 
 img{
     min-width: 200px;
     position: relative;
     display: flex;
 }
 /* 35em is also 560px (if basefont is 16px) */
-
+/* 
 @media only screen and (min-width: 35em) {
 	img{
         min-width: 200px;
     }
 
-}
+} */
 
 /* 64em is also 1024px (if basefont is 16px) */
-@media only screen and (min-width: 64em) {
+/* @media only screen and (min-width: 64em) {
 	@import "large";
-} 
+}   */
+
+
+img {
+    width  :100%;
+ }
+ h4{
+    color: #555;
+    font-weight: normal;
+ }
+ .col-4 p{
+    font-size: 14px;
+ }
+ .col-4:hover{
+    transform:translateY(-5px) ;
+ }
+ .col-2 .offer-img{
+    max-width: 500px;
+    padding: 50px;
+ }
+ .offer{
+    background: radial-gradient(#fff, #20468b) ;
+    margin-top: 80px;
+    padding:30px 0
+ }
+ small{
+    color: #555;
+}
+.cart-icon{
+    color: lightgray;
+    cursor: pointer;
+}
+@media only screen and (max-width: 600px) {
+   .col-2 .offer-img{
+      max-width: 300px;
+   }
+}

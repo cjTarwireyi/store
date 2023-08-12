@@ -10,7 +10,7 @@
     padding:0;
     box-sizing: border-box;
 }
-html, body { height: 100%; }
+html, body { height: 100%;  background: radial-gradient(#fff, white) }
 body { margin: 0; font-family: 'Poppins', sans-serif;}
 .star-rating{
     color: gold;
@@ -79,6 +79,11 @@ body { margin: 0; font-family: 'Poppins', sans-serif;}
     left:50%;
     transform: translate(-50%);
  }
+ .logo{
+   color: red;
+   border-color: wheat;
+   border-style: dashed;
+}
  /* media query for screen less than 600px */
 @media only screen and (max-width: 700px) {
    .row{
