@@ -49,9 +49,9 @@
                 <ul id="menuItems">
                     <li><a href="Home">Home</a></li>
                     <li><a routerLink="/products">Products</a></li>
-                    <li><a href="About">About</a></li>
-                    <li><a href="Contact">Contact</a></li>
-                    <li><a href="Account">Account</a></li>
+                    <li><a routerLink="/about">About</a></li>
+                    <li><a routerLink="/contact">Contact</a></li>
+                    <li><a routerLink="/account">Account</a></li>
                 </ul>
             </nav>
                 <button mat-icon-button>
@@ -61,8 +61,12 @@
                     matBadgeColor="warn" class="mat-icon-color">
                     shopping_cart</mat-icon>
                 </button>
-                <button mat-icon-button class="menu-icon" (click)="menuToggle()" aria-label="Example icon-button with menu icon">
+                <button *ngIf="!smallScreenMenuIsVisible" mat-icon-button class="menu-icon" (click)="menuToggle()" aria-label="Example icon-button with menu icon">
                     <mat-icon class="mat-icon-color">menu</mat-icon>
+                </button>
+                
+                <button *ngIf="smallScreenMenuIsVisible" mat-icon-button class="menu-icon" (click)="menuToggle()" aria-label="Example icon-button with menu icon">
+                    <mat-icon class="mat-icon-color">close</mat-icon>
                 </button>
            
         </div>

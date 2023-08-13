@@ -18,6 +18,12 @@ body { margin: 0; font-family: 'Poppins', sans-serif;}
 .btn-success {
      --bs-btn-color: black; 
 }
+.container{
+   max-width: 1300px;
+   margin: auto;
+   padding-left: 25px;
+   padding-right: 25px;
+}
 .row{
     display: flex;
     align-items: center;

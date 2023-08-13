@@ -36,6 +36,9 @@ import { FeaturedProductsComponent } from './featured-products/featured-products
 import { TestimonialComponent } from './testimonial/testimonial.component';
 import { BrandsComponent } from './brands/brands.component';
 import { FooterComponent } from './footer/footer.component';
+import { AboutComponent } from './about/about.component';
+import { ContactComponent } from './contact/contact.component';
+import { AccountComponent } from './account/account.component';
 
 @NgModule({
   declarations: [
@@ -56,6 +59,9 @@ import { FooterComponent } from './footer/footer.component';
     TestimonialComponent,
     BrandsComponent,
     FooterComponent,
+    AboutComponent,
+    ContactComponent,
+    AccountComponent,
   ],
   imports: [
     BrowserModule,

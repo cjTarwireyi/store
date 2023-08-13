@@ -18,3 +18,15 @@ a:link {
     background-color: transparent;
     text-decoration: underline;
   }
+  .header .row{
+    margin-top: 70px;
+}
+.col-2 img{
+  max-width: 100%;
+  padding:50px 0
+}
+.col-2 h1{
+  font-size: 50px;
+  line-height: 60px;
+  margin: 25px;
+}

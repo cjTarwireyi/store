@@ -1,4 +1,3 @@
-
 .navbar{
     display: flex;
     align-items: center;
@@ -22,12 +21,6 @@ a{
 }
 p{
     color: #555;
-}
-.container{
-    max-width: 1300px;
-    margin: auto;
-    padding-left: 25px;
-    padding-right: 25px;
 }
 .col-2 img{
     max-width: 100%;
@@ -58,6 +51,12 @@ p{
 }
 /* media query for less than 800px */
 @media only screen and (max-width: 800px) {
+    .navbar-small-screen{
+        display: flex;
+        align-items: center;
+        padding: 0px;
+        margin-top: 0px;
+    }
     nav ul{
         position: absolute;
         top: 70px;

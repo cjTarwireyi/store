@@ -13,6 +13,7 @@ export class HeaderComponent implements OnInit{
   itemsQuantity = 0 ;
   currencyCode: string ='';
   menuItems: HTMLElement | null = null
+  smallScreenMenuIsVisible = false;
   @Input()
   get cart(): ICart{
     return this._cart;
@@ -41,16 +42,24 @@ export class HeaderComponent implements OnInit{
   }
 
   menuToggle(): void{
+    
    if(this.menuItems ){   
-      this.menuItems.style.maxHeight = this.menuItems.style.maxHeight =="0px"
-      ? this.menuItems.style.maxHeight="200px"
-      :this.menuItems.style.maxHeight="0px"   
+    if(this.menuItems.style.maxHeight =="0px"){
+      this.menuItems.style.maxHeight = "200px";
+      this.smallScreenMenuIsVisible = true
+      return;
+    }
+      this.menuItems.style.maxHeight = "0px"; 
+      this.smallScreenMenuIsVisible = false  
    } 
   }
 
   ngOnInit(): void {
     this.currencyCode = this.currencyService.getCurrencyCode();
     this.menuItems = document.getElementById("menuItems");
+
+    if(this.menuItems)
+    this.menuItems.style.maxHeight = this.menuItems.style.maxHeight="0px"; 
     
   }
 }
