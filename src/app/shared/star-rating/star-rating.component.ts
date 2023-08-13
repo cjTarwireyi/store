@@ -5,14 +5,7 @@ import { IRatingModel } from 'src/app/models/rating.model';
 @Component({
   selector: 'app-star-rating',
   templateUrl:'./star-rating.component.html',
-  styles: [
-    `.crop {
-      overflow: hidden;
-    }
-    div {
-      cursor: pointer;
-    }`
-  ]
+  styleUrls:['./star-rating.component.css']
 })
 export class StarRatingComponent implements  OnInit {
 @Input() product : IProduct | undefined ;

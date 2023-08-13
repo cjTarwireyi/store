@@ -1,16 +1,17 @@
+<div class="flex">
+  <div class="crop"
+  [style.width.px]="product?.cropWidth"
+  [title]="product?.rating "
+  (click)='onClick()'>
+  
+<div style="width: 75px">  
 
-<div class="crop"
-     [style.width.px]="product?.cropWidth"
-     [title]="product?.rating "
-     (click)='onClick()'>
-     
-  <div style="width: 75px">  
-   
-    <span class="fa fa-star star-rating"></span>
-    <span class="fa fa-star star-rating"></span>
-    <span class="fa fa-star star-rating"></span>
-    <span class="fa fa-star star-rating"></span>
-    <span class="fa fa-star star-rating"></span>
-  </div>
+ <span class="fa fa-star star-rating"></span>
+ <span class="fa fa-star star-rating"></span>
+ <span class="fa fa-star star-rating"></span>
+ <span class="fa fa-star star-rating"></span>
+ <span class="fa fa-star star-rating"></span>
+</div>
 </div>
 <span *ngIf="showVotes">({{product?.votes}})</span>
+</div>

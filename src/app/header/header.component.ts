@@ -10,7 +10,7 @@ import { CurrencyService } from '../shared/currency.service';
 })
 export class HeaderComponent implements OnInit{
   private _cart: ICart = {items: []};
-  itemsQuantity = 0 ;
+  itemsQuantity = 1 ;
   currencyCode: string ='';
   menuItems: HTMLElement | null = null
   smallScreenMenuIsVisible = false;

@@ -1,9 +1,9 @@
 /* You can add global styles to this file, and also import other style files */
 @import "~font-awesome/css/font-awesome.min.css";
-/* @import "~bootstrap/dist/css/bootstrap.min.css";
-@tailwind base;
+/* @import "~bootstrap/dist/css/bootstrap.min.css";*/
+/* @tailwind base;
 @tailwind components;
-@tailwind utilities; */
+@tailwind utilities;  */
 
 *{
     margin: 0;
@@ -90,6 +90,32 @@ body { margin: 0; font-family: 'Poppins', sans-serif;}
    border-color: wheat;
    border-style: dashed;
 }
+.text-single-line {
+   overflow: hidden;
+   text-overflow: ellipsis;
+   white-space: nowrap;
+ }
+ .flex{
+   display: flex;
+}
+
+.flex,.space{
+   display: flex;
+   justify-content: space-around;
+}
+.truncate {
+   width: 200px;
+   white-space: nowrap;
+   overflow: hidden;
+   text-overflow: ellipsis;
+   font-size: 14px;
+   margin: 0;
+ }
+ 
+.truncate:hover {   
+   white-space: wrap;
+   font-size: 12px;
+ }
  /* media query for screen less than 600px */
 @media only screen and (max-width: 700px) {
    .row{

@@ -54,13 +54,52 @@
                     <li><a routerLink="/account">Account</a></li>
                 </ul>
             </nav>
-                <button mat-icon-button>
+                <button mat-icon-button [matMenuTriggerFor]="menu">
                     <mat-icon
                     [matBadge]="itemsQuantity"
                     [matBadgeHidden]="!itemsQuantity"
                     matBadgeColor="warn" class="mat-icon-color">
                     shopping_cart</mat-icon>
                 </button>
+
+
+                <mat-menu #menu="matMenu">
+                    <div class="cart-containter" *ngIf="cart.items.length">
+                        <div class="pb-3 flex justify-between">
+                            <span class="mr-16">{{itemsQuantity}} Items</span>
+                          
+                        </div>
+                        <table>
+                            <tr *ngFor="let item of cart.items">
+                                <td><p class="truncate">{{item.name}}</p></td><td>x {{item.quantity}}</td>
+                            </tr>
+                            <tr><td> Total:</td><td> <span class="font-bold">{{getTtotal() | currency: currencyCode}}</span></td></tr>
+                        </table>
+                        <!-- <div class="py-3" *ngIf="cart.items.length">
+                            <div class="text.single-line"
+                            *ngFor="let item of cart.items">
+                              <span>{{item.name}}</span> x {{item.quantity}}
+                                <span class="font-bold">{{item.price | currency}}</span>
+                            </div>       
+                        </div> -->
+                     <!-- <div class="flex justify-between py-3 font-light">
+                        Total:
+                        <span class="font-bold">{{getTtotal() | currency: currencyCode}}</span>
+                     </div> -->
+                     <div class="flex space justify-between">
+                        <button (click)="onClearCart()" class="cart-icon-red">
+                            <mat-icon>remove_shopping_cart</mat-icon>
+                        </button>
+                        <button  routerLink="/cart" class="cart-icon-green">
+                            <mat-icon>shopping_cart</mat-icon>
+                        </button>
+                     </div>
+                    </div>
+                    <p *ngIf="!cart.items.length">Cart is empty</p>
+                </mat-menu>
+
+
+
                 <button *ngIf="!smallScreenMenuIsVisible" mat-icon-button class="menu-icon" (click)="menuToggle()" aria-label="Example icon-button with menu icon">
                     <mat-icon class="mat-icon-color">menu</mat-icon>
                 </button>

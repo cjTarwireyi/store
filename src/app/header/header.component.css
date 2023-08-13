@@ -49,6 +49,41 @@ p{
 .menu-icon{
     display: none;
 }
+
+/* Cart preview */
+.cart-containter{
+    max-width: 1080px;
+    margin: auto;
+    padding-left:25px;
+    padding-right: 25px;
+
+}
+/* .cart-icon-container{
+    display: flex;
+    justify-content: space-around;
+} */
+.cart-icon-green{
+    color: white;
+    background: green;
+    border: none;
+    border-radius: 20%;
+    cursor: pointer;
+    position: relative;
+    /* top: 133px; */
+    left: 32px;
+
+}
+.cart-icon-red{
+    color: white;
+    background: red;
+    border: none;
+    border-radius: 20%;
+    cursor: pointer;  
+    position: relative;
+    /* top: 133px; */
+    left: -32px;
+
+}
 /* media query for less than 800px */
 @media only screen and (max-width: 800px) {
     .navbar-small-screen{
