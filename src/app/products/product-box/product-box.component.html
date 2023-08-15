@@ -23,16 +23,17 @@
         </div>
     </div>
 </mat-card> -->
+
 <p class="truncate hover:whitespace-normal">{{product?.title}}</p>
      <img [src]="product?.image" height="200px">
    
-    <div class="flex space">
-        <app-star-rating [product] ="product"></app-star-rating>
-        <p>$50.00</p> 
+    <div class="flex-container">
+        <app-star-rating class="item" [product] ="product"></app-star-rating>
+        <p class="item">$50.00</p> 
     </div>
-    <div class="flex space">
+    <div class="flex-container-no-gap">
         
-     <a (click)="onAddToCart()" title="Add To Cart">
+     <a class="align-right-flex item" (click)="onAddToCart()" title="Add To Cart">
         <mat-icon class="cart-icon">
             shopping_cart
         </mat-icon>

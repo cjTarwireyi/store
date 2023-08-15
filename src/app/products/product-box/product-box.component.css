@@ -50,6 +50,29 @@ img {
     color: lightgray;
     cursor: pointer;
 }
+.flex-container{
+   display: flex;
+   gap: 5em;
+  
+}
+.item{
+   flex: 1;
+}
+.item:first-child{
+   flex:90% 0;
+}
+.flex-container-no-gap{
+   display: flex;
+   flex-direction: column;
+  
+}
+.align-right-flex{
+   align-self: flex-end;
+}
+.align-left-flex{
+   align-self: flex-start;
+}
+
 @media only screen and (max-width: 600px) {
    .col-2 .offer-img{
       max-width: 300px;

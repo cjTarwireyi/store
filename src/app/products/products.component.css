@@ -1,3 +1,11 @@
 .col-4:hover{
     transform:translateY(-5px) ;
  }
+ .light-border{
+    border: lightgray;
+    border-style:solid;
+ }
+ .products-flex-container{
+    display: flex;
+    gap: 3em;
+ }

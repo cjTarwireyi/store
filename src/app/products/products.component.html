@@ -26,7 +26,7 @@ class="min-h-full mx-auto border-x">
     </mat-drawer-content>
 </mat-drawer-container> --> 
 <div class="small-container" *ngIf="products$ | async as products">
-<div class="row" >
+<div class="row products-flex-container" >
     <div class="col-4"  *ngFor="let product of products">
         <!-- <img src="assets/product-5.jpg" >
         <h4>Pink Printed T-shirt</h4>
