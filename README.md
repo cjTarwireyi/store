@@ -2,7 +2,7 @@
 This app allow ccustomers to perform online shopping for various goods. In addition they can create acounts which they can use manage their shopping.
 #Live Demo 
 Open this link in your browser http://awsbucket-ct.s3-website.eu-central-1.amazonaws.com
-
+# Tech Stack
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.1.4.
 
 ## Development server
