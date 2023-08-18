@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, OnDestroy, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input, OnDestroy, OnInit } from '@angular/core';
 import { IProduct } from '../models/product.model';
 import { CartService } from '../cart/cart.service';
 import { StoreService } from '../store/store.service';
@@ -13,16 +13,16 @@ const ROWS_HEIGHT: {[id:number]: number} = {1: 400, 3: 335, 4: 350};
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ProductsComponent implements OnInit, OnDestroy {
-
+@Input('category') selectedCategory= '';
   cols = 3;
   rowHeight= ROWS_HEIGHT[this.cols];
-  category:string | undefined;
+  //category:string | undefined;
   sort ='desc';
   count='20';
   errorMessage=""; 
   filter :IFilter ={limit:"5", sort:"desc",category:undefined}
   loadByCategory = false;
-
+  category = '';
   constructor(private cartService :CartService, private storeService :StoreService){}
 
   products$ = combineLatest({prod:this.storeService.products$, prodCat:this.storeService.productsFilteredByCategory$})
@@ -65,7 +65,7 @@ export class ProductsComponent implements OnInit, OnDestroy {
   }
 
   getProducts():void{
-    
+    this.categorySanitizer();
     let filter :IFilter ={limit:this.count, sort:this.sort,category:this.category}
     if(this.category){
       this.loadByCategory=true;
@@ -89,15 +89,25 @@ export class ProductsComponent implements OnInit, OnDestroy {
   ngOnDestroy(): void {
  
   }
-  product : IProduct ={
-    id: 4,
-    title: "Canon EOS 400D",
-    image: "assets/dom-hill-nimElTcTNyY-unsplash.jpg",
-    description:"It is the successor of the Canon EOS 350D, and upgrades to a 10.1 megapixel CMOS sensor, a larger continuous shooting buffer, an integrated image sensor vibrating cleaning system (first used in a Canon EOS DSLR), a more precise nine-point autofocus system from the EOS 30D, improved grip, and a bigger 2.5-inch (64 mm) LCD with 230,000 pixels and a larger viewing angle which replaces the top status screen.",
-    price: 19.99,
-    category:"",
-    cropWidth:60,
-    rating:"5",
-    votes:100
-  } ;
+
+private categorySanitizer():void{
+  if(this.selectedCategory=='men'){
+    this.category="men's clothing"
+    return;
+  }
+
+  if(this.selectedCategory=='women'){
+    this.category="women's clothing"
+    return;
+  }
+
+  if(this.selectedCategory=='electronics'){
+    this.category="electronics"
+    return;
+  }
+  if(this.selectedCategory=='jewelery'){
+    this.category="jewelery"
+    return;
+  }
+}
 }

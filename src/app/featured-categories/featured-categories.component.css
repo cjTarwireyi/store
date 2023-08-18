@@ -2,5 +2,6 @@
     margin: 70px 0;
 }
 .col-3 img {
-    width  :100%
+    width  :100%;
+    cursor: pointer;
  }

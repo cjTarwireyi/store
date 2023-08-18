@@ -2,14 +2,14 @@
     <div class="small-container">
         <h2 class="featured-items-title">Featured Categories</h2>
         <div class="row">
-            <div class="col-3">  
+            <div class="col-3" [routerLink]="['/products','men']">  
                 <img src="assets/category-1.jpg">
             </div>
-            <div class="col-3"> 
-                <img src="assets/category-2.jpg">
-            </div>
-            <div class="col-3"> 
+            <div class="col-3" [routerLink]="['/products','women']"> 
                 <img src="assets/category-3.jpg">
+            </div>
+            <div class="col-3" [routerLink]="['/products','electronics']"> 
+                <img src="assets/ssd.jpg" height="370px">
             </div>
         </div>
     </div> 

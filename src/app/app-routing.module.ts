@@ -15,6 +15,7 @@ const routes: Routes = [
   { path:'contact', component:ContactComponent},
   { path: 'account', component: AccountComponent},
   { path: "products", component: ProductsComponent },
+  { path: "products/:category", component: ProductsComponent },
   { path: "cart", component: CartComponent },
   { path: "paymentSuccess", component: PaymentSuccessComponent},
   { path: "payment", component: PaymentOptionsComponent},
@@ -22,7 +23,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes,{useHash: true})],
+  imports: [RouterModule.forRoot(routes,{useHash: true, bindToComponentInputs: true})],
   exports: [RouterModule],
 })
 export class AppRoutingModule {}
