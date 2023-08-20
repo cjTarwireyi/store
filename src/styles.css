@@ -23,6 +23,7 @@ body { margin: 0; font-family: 'Poppins', sans-serif;}
    margin: auto;
    padding-left: 25px;
    padding-right: 25px;
+
 }
 .row{
     display: flex;
@@ -66,6 +67,7 @@ body { margin: 0; font-family: 'Poppins', sans-serif;}
     margin: auto;
     padding-left:0px;
     padding-right: 0px;
+    min-height: 583px;
  }
  .featured-items-title{
     text-align: center;
