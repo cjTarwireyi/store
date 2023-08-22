@@ -50,17 +50,8 @@ img {
     color: lightgray;
     cursor: pointer;
 }
-.flex-container{
-   display: flex;
-   gap: 5em;
-  
-}
-.item{
-   flex: 1;
-}
-.item:first-child{
-   flex:90% 0;
-}
+
+
 .flex-container-no-gap{
    display: flex;
    flex-direction: column;

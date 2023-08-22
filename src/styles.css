@@ -25,6 +25,17 @@ body { margin: 0; font-family: 'Poppins', sans-serif;}
    padding-right: 25px;
 
 }
+.flex-container{
+   display: flex;
+   gap: 5em;
+  
+}
+.flex-container .item{
+   flex: 1;
+}
+.flex-container .item:first-child{
+   flex:90% 0;
+}
 .row{
     display: flex;
     align-items: center;
@@ -58,6 +69,7 @@ body { margin: 0; font-family: 'Poppins', sans-serif;}
     min-width: 200px;
     margin-bottom: 50px;
     transition: transform 0.5s;
+    flex: 1;
  }
  .col-5{
     width: 160px;
